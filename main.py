@@ -147,18 +147,14 @@ def sectionToNum(var):
 	}.get(var,'1-2')
 
 #记录解析时间
-kebiao["dateinfo"] = str(time.strftime('%Y-%m-%d',time.localtime(time.time())))
-
+##kebiao["dateinfo"] = str(time.strftime('%Y-%m-%d',time.localtime(time.time())))
+kebiao["dateinfo"] = "2020-09-01"
 def GenerateJson():
     xls_name = input("请手动输入xls文件名称：")
-    xls_min_row = int(float(input("请手动输入xls班级名称起始行（默认为4）：").strip()))
-    if xls_min_row == None : xls_min_row = 4
-    xls_max_row = int(float(input("请手动输入xls最大行（默认为15458）：").strip()))
-    if xls_max_row == None : xls_max_row = 15458
+    xls_min_row = int(float(input("请手动输入xls班级名称起始行：").strip()))
+    xls_max_row = int(float(input("请手动输入xls最大行：").strip()))
     if os.path.exists(xls_name):
         try:
-            #检录计时
-            start_time = time.clock()
             #引用xls数据
             wb = xw.App(visible=False, add_book=False).books.open(xls_name)
             sht = wb.sheets[0]
@@ -179,7 +175,6 @@ def GenerateJson():
 
             #阶段日志
             print("\n总共检录 {} 个班级".format(len(class_name_list)))
-            print("检录用时：{} 秒\n".format(time.clock() - start_time))
 
             #解析计时
             start_time = time.clock()
@@ -252,9 +247,8 @@ def GenerateJson():
                 print("生成 {}.json 文件\n".format(classname))
 
             print("总共解析 {} 个班级".format(len(os.listdir("json"))))
-            print("\n解析用时：{} 秒".format(time.clock() - start_time))
-        except e:
-            print("解析 {} 失败\n{}".format(xls_name,e))
+        except:
+            print("解析 {} 失败\n".format(xls_name))
     else:
         print("未在脚本根目录检测到 " + xls_name)
 
@@ -297,7 +291,6 @@ def JsonModify():
 
             except Exception as e:
                 print("去重 {} 错误\n{}".format(j,e) )
-        print("\n生成用时：{} 秒".format(time.clock() - start_time))
 
 #一种课模板
 one_ics={
