@@ -2,3 +2,8 @@
 *.iml
 *.xml
 .idea/
+*.xls
+*.json
+json/
+*.ics
+ics/
