@@ -1,11 +1,14 @@
 # CSUFT-Timetable
-基于xls课表文件，解析生成全校json文件和ics文件
+理论上兼容所有强智教务系统
+基于xls课表文件
+解析生成全校json文件和ics文件
 
 ics生成代码修改自：https://github.com/zhjc1124/pycurriculum
 
 ## 使用指南
 
-先登录学校教务网，访问教务处(http://jwgl.xxxxx.edu.cn/jsxsd/kbcx/kbxx_xzb_ifr)
+先登录学校的强智教务网
+访问教务处(http://jwgl.xxxxx.edu.cn/jsxsd/kbcx/kbxx_xzb_ifr)
 获取全校课表，写入xls文件中
 本脚本只能解析，不能获取
 
